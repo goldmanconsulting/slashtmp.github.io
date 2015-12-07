@@ -1,0 +1,84 @@
+
+/**
+ * Landing page icons
+ */
+
+ .service-icon {
+    margin-bottom: 30px;
+    width: 145px;
+    height: 145px;
+    margin: auto;
+    border-radius: 50%;
+    border: 10px solid #a9a9a9;
+    margin-bottom: 20px;
+    position: relative;
+    /*-webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;*/
+}
+
+.pd-icon-lock {
+    background: url(../../img/icon-lock.png) no-repeat;
+    width: 53px;
+}
+
+
+.pd-icon-responsive {
+    background: url(../../img/icon-responsive.png) no-repeat;
+    width: 66px;
+}
+
+.pd-icon-folder {
+    background: url(../../img/icon-folder.png) no-repeat;
+    width: 70px;
+}
+
+.pixeden {
+    height: 63px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: block;
+}
+
+/**
+ * Dropzone.js custom styles
+ */
+
+.dropzone {
+    border: 2px dashed rgb(0, 135, 247);
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    border-radius: 5px;
+    background: rgb(243, 244, 245);
+}
+
+.dropzone, .dropzone * {
+    box-sizing: border-box;
+}
+
+.dropzone.dz-clickable, .dropzone.dz-clickable .dz-message, .dropzone.dz-clickable .dz-message * {
+    cursor: pointer;
+}
+
+.dropzone .dz-message {
+    font-weight: 400;
+    text-align: center;
+    margin: 2em 0px;
+    color: rgb(100, 108, 127);
+    /*color: rgb(67, 73, 85);*/
+}
+
+.dropzone .dz-message .note {
+    font-size: 0.8em;
+    font-weight: 400;
+    display: block;
+    margin-top: 1.4rem;
+}
+
+
