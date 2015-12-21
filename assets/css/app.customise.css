@@ -43,42 +43,18 @@
     display: block;
 }
 
-/**
- * Dropzone.js custom styles
- */
-
-.dropzone {
-    border: 2px dashed rgb(0, 135, 247);
-    border-image-source: initial;
-    border-image-slice: initial;
-    border-image-width: initial;
-    border-image-outset: initial;
-    border-image-repeat: initial;
-    border-radius: 5px;
-    background: rgb(243, 244, 245);
+#dropzone-preview-container {
+    display: none;
 }
 
-.dropzone, .dropzone * {
-    box-sizing: border-box;
+#file-drop-top {
+    margin: 45px 0 0 0;
 }
 
-.dropzone.dz-clickable, .dropzone.dz-clickable .dz-message, .dropzone.dz-clickable .dz-message * {
-    cursor: pointer;
+label[for='share-link-fileref'] {
+    font-weight: normal;
 }
 
-.dropzone .dz-message {
-    font-weight: 400;
-    text-align: center;
-    margin: 2em 0px;
-    color: rgb(100, 108, 127);
-    /*color: rgb(67, 73, 85);*/
+.help-block {
+    font-size: 1.3rem;
 }
-
-.dropzone .dz-message .note {
-    font-size: 0.8em;
-    font-weight: 400;
-    display: block;
-    margin-top: 1.4rem;
-}
-
-
