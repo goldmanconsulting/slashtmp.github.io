@@ -58,3 +58,10 @@ label[for='share-link-fileref'] {
 .help-block {
     font-size: 1.3rem;
 }
+
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .sprite {
+        background-image: url(../../img/sprite.png);
+    }
+}
