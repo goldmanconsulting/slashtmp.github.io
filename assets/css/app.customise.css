@@ -59,6 +59,14 @@ label[for='share-link-fileref'] {
     font-size: 1.3rem;
 }
 
+/**
+ * Non-landing page style overrides
+ */
+
+.header-override {
+    min-height: auto !important;
+    padding: inherit;
+}
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .sprite {
