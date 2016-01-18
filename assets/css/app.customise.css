@@ -64,7 +64,7 @@ label[for='share-link-fileref'] {
  */
 
 .header-override {
-    min-height: auto !important;
+    min-height: 0 !important;
     padding: inherit;
 }
 
