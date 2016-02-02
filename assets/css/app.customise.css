@@ -68,6 +68,10 @@ label[for='share-link-fileref'] {
     padding: inherit;
 }
 
+.intro sub {
+    font-weight: normal;
+}
+
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .sprite {
         background-image: url(../../img/sprite.png);
