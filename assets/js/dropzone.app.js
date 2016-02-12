@@ -7,30 +7,26 @@ var options = {
     this.on("success", function(file, resp) {
       var elem = file.previewElement.querySelector(".btn-share");
       // TODO why is the resp only represents the body of the response, need the 'Location' HTTP Header attribute but can't get to it...
-      elem.setAttribute('data-dz-fileref', 'http://slashtmp.io.s3.amazonaws.com/' + file.name);
+      elem.setAttribute('data-dz-fileref', 'http://slashtmp.io.s3.amazonaws.com/' + file.key);
       elem.setAttribute('data-dz-filename', file.name);
     });
   },
   accept: function(file, done) {
-    // TODO call server to create and sign policy so that we can upload file to S3
-    //file.key = '1234324132';
-    //file.key = uuid.v4();
-    //console.log('file=' + file.key);
     $.get('https://lew6jvdlod.execute-api.ap-northeast-1.amazonaws.com/prod/uuid', function(data) {
       console.log('key=' + data.uuid);
       file.key = data.uuid;
       done();
     });
-
   },
   sending: function(file, xhr, formData) {
     formData.append('key', file.key);
     formData.append('acl', 'public-read');
     formData.append('x-amz-date', '20160211T004131Z');
     formData.append('x-amz-algorithm', 'AWS4-HMAC-SHA256');
+    formData.append('x-amz-storage-class', 'REDUCED_REDUNDANCY');
     formData.append('x-amz-credential', 'AKIAJBWJ4FGQSURTZVXQ/20160211/ap-southeast-2/s3/aws4_request');
-    formData.append('x-amz-signature', 'cb7a1d8936c7d9645187362f8374870d5bbb72057fc475b22b9c8724722cb745');
-    formData.append('policy', 'eyAiZXhwaXJhdGlvbiI6ICIyMTAwLTEyLTAxVDEyOjAwOjAwLjAwMFoiLAogICJjb25kaXRpb25zIjogWwogICAgeyJhY2wiOiAicHVibGljLXJlYWQifSwKICAgIHsiYnVja2V0IjogInNsYXNodG1wLmlvIn0sCiAgICB7IngtYW16LWNyZWRlbnRpYWwiOiAiQUtJQUpCV0o0RkdRU1VSVFpWWFEvMjAxNjAyMTEvYXAtc291dGhlYXN0LTIvczMvYXdzNF9yZXF1ZXN0In0sCiAgICB7IngtYW16LWFsZ29yaXRobSI6ICJBV1M0LUhNQUMtU0hBMjU2In0sCiAgICB7IngtYW16LWRhdGUiOiAiMjAxNjAyMTFUMDA0MTMxWiJ9LAogICAgeyJudWxsIjogIiJ9LAogICAgWyJzdGFydHMtd2l0aCIsICIka2V5IiwgIiJdLAogICAgWyJjb250ZW50LWxlbmd0aC1yYW5nZSIsIDAsIDEwNDg1NzYwMF0KICBdCn0=');
+    formData.append('x-amz-signature', 'e19d5258474056af9d7334bf44cf6af8213060d2a86b5df604826c57791d7526');
+    formData.append('policy', 'eyAiZXhwaXJhdGlvbiI6ICIyMTAwLTEyLTAxVDEyOjAwOjAwLjAwMFoiLAogICJjb25kaXRpb25zIjogWwogICAgeyJhY2wiOiAicHVibGljLXJlYWQifSwKICAgIHsiYnVja2V0IjogInNsYXNodG1wLmlvIn0sCiAgICB7IngtYW16LXN0b3JhZ2UtY2xhc3MiOiAiUkVEVUNFRF9SRURVTkRBTkNZIn0sCiAgICB7IngtYW16LWNyZWRlbnRpYWwiOiAiQUtJQUpCV0o0RkdRU1VSVFpWWFEvMjAxNjAyMTEvYXAtc291dGhlYXN0LTIvczMvYXdzNF9yZXF1ZXN0In0sCiAgICB7IngtYW16LWFsZ29yaXRobSI6ICJBV1M0LUhNQUMtU0hBMjU2In0sCiAgICB7IngtYW16LWRhdGUiOiAiMjAxNjAyMTFUMDA0MTMxWiJ9LAogICAgWyJzdGFydHMtd2l0aCIsICIka2V5IiwgIiJdLAogICAgWyJjb250ZW50LWxlbmd0aC1yYW5nZSIsIDAsIDEwNDg1NzYwMF0KICBdCn0=');
   }
 };
 

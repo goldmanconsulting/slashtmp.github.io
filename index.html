@@ -56,7 +56,7 @@
 				<!-- Form -->
 				<div class="row">
 					<div class="col-xs-12 col-md-10 col-md-offset-1">
-						<form id="file-drop-top" class="form dropzone dz-clickable" action="http://store.slashtmp.io/files">
+						<form id="file-drop-top" class="form dropzone dz-clickable" action="http://slashtmp.io.s3.amazonaws.com">
 							<div class="dz-message needsclick">
     							Drop your files here or click to upload<br>
     							<span class="note needsclick">
@@ -191,9 +191,9 @@
 			<div class="dz-details">
 				<div class="dz-filename"><span data-dz-name></span></div>
 				<div class="dz-fileref">
-					<button type="button" class="btn btn-success btn-share" data-toggle="modal" data-target="#share-link-dialog" data-dz-fileref data-dz-filename>
+					<a class="btn btn-success btn-share" data-toggle="modal" data-target="#share-link-dialog" data-dz-fileref data-dz-filename>
 						share
-					</button>
+					</a>
 				</div>
 			</div>
 			<div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
