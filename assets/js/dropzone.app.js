@@ -13,7 +13,6 @@ var options = {
   },
   accept: function(file, done) {
     $.get('https://lew6jvdlod.execute-api.ap-northeast-1.amazonaws.com/prod/uuid', function(data) {
-      console.log('key=' + data.uuid);
       file.key = data.uuid;
       done();
     });
