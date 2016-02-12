@@ -132,14 +132,6 @@
 						<div class="row">
 							<div class="col-xs-12 col-md-10 col-md-offset-1">
 								<form id="file-drop-bottom" class="form dropzone dz-clickable" action="http://slashtmp.io.s3.amazonaws.com">
-
-                  <input type="hidden" name="acl" value="public-read" />
-                  <input type="hidden" name="x-amz-credential" value="AKIAJBWJ4FGQSURTZVXQ/20160211/ap-southeast-2/s3/aws4_request" />
-                  <input type="hidden" name="x-amz-algorithm" value="AWS4-HMAC-SHA256" />
-                  <input type="hidden" name="x-amz-date" value="20160211T004131Z" />
-                  <input type="hidden" name="policy" value="eyAiZXhwaXJhdGlvbiI6ICIyMTAwLTEyLTAxVDEyOjAwOjAwLjAwMFoiLAogICJjb25kaXRpb25zIjogWwogICAgeyJhY2wiOiAicHVibGljLXJlYWQifSwKICAgIHsiYnVja2V0IjogInNsYXNodG1wLmlvIn0sCiAgICB7IngtYW16LWNyZWRlbnRpYWwiOiAiQUtJQUpCV0o0RkdRU1VSVFpWWFEvMjAxNjAyMTEvYXAtc291dGhlYXN0LTIvczMvYXdzNF9yZXF1ZXN0In0sCiAgICB7IngtYW16LWFsZ29yaXRobSI6ICJBV1M0LUhNQUMtU0hBMjU2In0sCiAgICB7IngtYW16LWRhdGUiOiAiMjAxNjAyMTFUMDA0MTMxWiJ9LAogICAgeyJudWxsIjogIiJ9LAogICAgWyJzdGFydHMtd2l0aCIsICIka2V5IiwgIiJdLAogICAgWyJjb250ZW50LWxlbmd0aC1yYW5nZSIsIDAsIDEwNDg1NzYwMF0KICBdCn0=" />
-                  <input type="hidden" name="x-amz-signature" value="cb7a1d8936c7d9645187362f8374870d5bbb72057fc475b22b9c8724722cb745" />
-
                   <div class="dz-message needsclick">
 		    							Drop your files here or click to upload<br>
 		    							<span class="note needsclick">
@@ -263,46 +255,11 @@
 	<script src="assets/js/skrollr.min.js"></script>
 	<script src="assets/js/classie.js"></script>
 	<script src="assets/js/jquery.doubletaptogo.min.js"></script>
-	<script src="assets/js/app.min.js"></script>
+  <script src="assets/js/app.min.js"></script>
 
 
 	<script src="assets/js/dropzone.js"></script>
 	<script src="assets/js/dropzone.app.js"></script>
-	<!--
-	<script type="text/javascript">
-
-		var options = {
-			previewTemplate: document.querySelector('#dropzone-preview-container').innerHTML,
-			maxFilesize: 100,
-			uploadMultiple: false,
-			createImageThumbnails: false,
-			init: function() {
-				this.on("success", function(file, resp) {
-					var elem = file.previewElement.querySelector(".btn-share");
-					elem.setAttribute('data-dz-fileref', resp.href);
-					elem.setAttribute('data-dz-filename', file.name);
-				});
-			}
-		};
-
-		Dropzone.options.fileDropTop = options;
-		Dropzone.options.fileDropBottom = options;
-
-		$(document).on('click', '.btn-share', function() {
-			$('#share-link-fileref').val($(this).data('dz-fileref'));
-			$('#share-link-filename').text($(this).data('dz-filename'));
-		});
-
-		$('#share-link-dialog').on('shown.bs.modal', function () {
-			$('#share-link-fileref').focus()
-		});
-
-		$("#share-link-fileref").focus(function(){
-			this.select();
-		});
-
-	</script>
-	-->
 
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
