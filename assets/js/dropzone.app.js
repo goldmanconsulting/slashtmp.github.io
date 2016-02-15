@@ -11,13 +11,9 @@ var options = {
       elem.setAttribute('data-dz-filename', file.name);
     });
   },
-  accept: function(file, done) {
-    $.get('https://lew6jvdlod.execute-api.ap-northeast-1.amazonaws.com/prod/uuid', function(data) {
-      file.key = data.uuid;
-      done();
-    });
-  },
   sending: function(file, xhr, formData) {
+    file.key = uuid.v4();
+
     formData.append('key', file.key);
     formData.append('acl', 'public-read');
     formData.append('x-amz-date', '20160211T004131Z');
