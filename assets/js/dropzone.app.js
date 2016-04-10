@@ -1,6 +1,6 @@
 var options = {
   previewTemplate: document.querySelector('#dropzone-preview-container').innerHTML,
-  maxFilesize: 100,
+  maxFilesize: 250,
   uploadMultiple: false,
   createImageThumbnails: false,
   init: function() {
