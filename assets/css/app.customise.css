@@ -51,7 +51,7 @@
     margin: 45px 0 0 0;
 }
 
-label[for='share-link-fileref'] {
+label[for='share-link-fileref'], label[for='share-link-via-email'] {
     font-weight: normal;
 }
 
