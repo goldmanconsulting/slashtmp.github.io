@@ -60,6 +60,13 @@ label[for='share-link-fileref'], label[for='share-link-via-email'] {
 }
 
 /**
+ * Share link dialog
+ */
+#spinner {
+  display: none;
+}
+
+/**
  * Non-landing page style overrides
  */
 

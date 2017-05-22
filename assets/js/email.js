@@ -13,6 +13,8 @@ function doSendEmail(email, filename, fileref) {
 
 function sendEmail() {
   toggleSendButton();
+  toggleSpinner();
+
   var email = $('#share-link-via-email').val();
   var fileref = $('#share-link-fileref').val();
   var filename = $('#share-link-filename').text();
@@ -24,13 +26,23 @@ function toggleSendButton() {
   btn.prop('disabled', !btn.prop('disabled'));
 }
 
+function toggleSpinner() {
+  $('#spinner').toggle();
+}
+
 function onSendEmailSuccess() {
   toggleSendButton();
+  toggleSpinner();
   $('#share-link-dialog').modal('hide');
 }
 
 function onSendEmailError() {
   toggleSendButton();
+  toggleSpinner();
 }
 
 $(document).on('click', '.btn-send', sendEmail);
+$(document).ready(function() {
+  var spinner = new Spinner().spin();
+  $('#spinner').append(spinner.el);
+});
