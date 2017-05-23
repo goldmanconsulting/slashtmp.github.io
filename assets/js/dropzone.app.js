@@ -11,7 +11,7 @@ var options = {
     });
   },
   accept: function(file, done) {
-    $.get('https://jr612kw3nk.execute-api.ap-northeast-1.amazonaws.com/prod/s3-upload-policy', function(data) {
+    $.get('https://d1cm91qzfl.execute-api.ap-northeast-1.amazonaws.com/latest/s3/upload/policy', function(data) {
       file.key = data.key;
       file.date = data.date;
       file.policy = data.policy;
