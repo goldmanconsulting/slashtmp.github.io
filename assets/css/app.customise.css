@@ -51,12 +51,19 @@
     margin: 45px 0 0 0;
 }
 
-label[for='share-link-fileref'] {
+label[for='share-link-fileref'], label[for='share-link-via-email'] {
     font-weight: normal;
 }
 
 .help-block {
     font-size: 1.3rem;
+}
+
+/**
+ * Share link dialog
+ */
+#spinner {
+  display: none;
 }
 
 /**
