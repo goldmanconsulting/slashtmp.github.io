@@ -1,13 +1,23 @@
+// dependencies required to be loaded in index.html
+// require('jquery')
+// require('dropzone')
+// require('localstorage')
+
 var options = {
   previewTemplate: document.querySelector('#dropzone-preview-container').innerHTML,
   maxFilesize: 250,
   uploadMultiple: false,
   createImageThumbnails: false,
   init: function() {
+    initDropzoneFromLocalStorage();
     this.on("success", function(file, resp) {
       var elem = file.previewElement.querySelector(".btn-share");
       elem.setAttribute('data-dz-fileref', file.preSignedUrl);
       elem.setAttribute('data-dz-filename', file.name);
+      // if uploadTime attribute exists then we know we're dealing with a file loaded from local storage,
+      // hence there is no need to save it, otherwise, every time the user visits the page we'll be duplicating
+      // the local storage contents
+      if (!file.uploadTime) saveToLocalStorage(file);
     });
   },
   accept: function(file, done) {
@@ -49,3 +59,23 @@ $('#share-link-dialog').on('shown.bs.modal', function () {
 $("#share-link-fileref").focus(function(){
   this.select();
 });
+
+var dzInitialised = false;
+function initDropzoneFromLocalStorage() {
+  // there are 2 dropzones on the page, hence this method will be called twice,
+  // so without this flag each file in local storage will be added to the dropzone twice
+  if (!dzInitialised) {
+    dzInitialised = true;
+
+    // remove files from local storage that are older than 24 hours since they have been deleted on the server
+    expireFilesInLocalStorage();
+
+    // display previously uploaded files that were persisted to local storage, which have not yet expired
+    var dz = Dropzone.forElement('#file-drop-top');
+    getFilesFromLocalStorage().forEach(function (file) {
+      dz.emit('addedfile', file);
+      dz.emit('success', file);
+      dz.emit('complete', file);
+    });
+  }
+}
