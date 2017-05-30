@@ -84,3 +84,19 @@ label[for='share-link-fileref'], label[for='share-link-via-email'] {
         background-image: url(../../img/sprite.png);
     }
 }
+
+/**
+ * Viewer page
+ */
+
+.viewer {
+  height: 100%;
+  margin: 10px 10px 0 10px;
+  border: 1px solid #e2e2e2;
+}
+
+.content {
+  width:100%;
+  height: 100%;
+  border: 0;
+}
