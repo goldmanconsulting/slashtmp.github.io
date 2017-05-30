@@ -18,9 +18,22 @@
 </head>
 
 <body>
-  <div class="viewer">
-    <iframe class="content" src="http://storage.slashtmp.io/39f86086-4479-11e7-a39b-836e23a0b958?AWSAccessKeyId=AKIAJBWJ4FGQSURTZVXQ&Expires=1496153712&Signature=m%2FltMAUsZ2RYEa8MYdxbDtJ50h0%3D"></iframe>
-  </div>
+	<div class="viewer-container">
+		<div class="header">
+			<span>
+				File name goes here
+			</span>
+			<a class="btn btn-success btn-download">
+				download
+			</a>
+		</div>
+	  <div class="viewer">
+	    <iframe id="content-viewer" class="content"></iframe>
+	  </div>
+	</div>
+
+	<script src="assets/js/jquery-1.11.2.min.js"></script>
+	<script src="assets/js/viewer.js"></script>
 </body>
 
 </html>
