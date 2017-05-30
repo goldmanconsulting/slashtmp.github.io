@@ -9,7 +9,6 @@ var options = {
   uploadMultiple: false,
   createImageThumbnails: false,
   init: function() {
-    initDropzoneFromLocalStorage();
     this.on("success", function(file, resp) {
       var elem = file.previewElement.querySelector(".btn-share");
       elem.setAttribute('data-dz-fileref', file.preSignedUrl);
@@ -19,6 +18,7 @@ var options = {
       // the local storage contents
       if (!file.uploadTime) saveToLocalStorage(file);
     });
+    initDropzoneFromLocalStorage();
   },
   accept: function(file, done) {
     $.get('https://d1cm91qzfl.execute-api.ap-northeast-1.amazonaws.com/latest/s3/upload/policy', function(data) {
