@@ -11,7 +11,7 @@ function getStore() {
 
 function saveToLocalStorage(file) {
   var store = getStore();
-  store.workspace.files.push({name: file.name, preSignedUrl: file.preSignedUrl, uploadTime: new Date()});
+  store.workspace.files.push({name: file.name, preSignedUrl: file.preSignedUrl, metadataPreSignedUrl: file.metadataPreSignedUrl, uploadTime: new Date()});
   localStorage.setItem(localStoreRef, JSON.stringify(store));
 }
 

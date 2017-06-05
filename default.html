@@ -12,26 +12,22 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/app.viewer.css">
 </head>
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <span class="navbar-brand"></span>
-      </div>
-      <div class="navbar-collapse navbar-right">
-        <!--<button class="btn btn-default navbar-btn download-btn">download</button>-->
-        <a class="btn btn-default navbar-btn download-btn" href="" download="untitled">download</a>
-      </div>
+  <div style="vertical-align: middle;">
+    <div class="text-center">
+      <strong class="file-ext"></strong> files can’t be previewed
     </div>
-  </nav>
-
-  <div class="container-fluid">
-    <iframe class="viewer-frame"></iframe>
   </div>
 
   <script src="assets/js/jquery-1.11.2.min.js"></script>
-  <script src="assets/js/viewer.js"></script>
+  <script>
+    $(document).ready(function() {
+      var filename = window.location.href.split('filename=')[1];
+      var hasExtension = filename.indexOf('.') != -1;
+      var extension = hasExtension ? filename.substr(filename.lastIndexOf('.')) : '.?';
+      $('.file-ext').text(extension);
+    });
+  </script>
 </body>
 </html>
