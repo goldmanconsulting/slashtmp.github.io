@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <title>Slashtmp - unlimited cloud storage</title>
+
+  <meta charset="utf-8">
+  <meta name="description" content="Slashtmp provides unlimited, temporary cloud storage for free">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+  <div style="vertical-align: middle;">
+    <div class="text-center">
+      <strong class="file-ext"></strong> files can’t be previewed
+    </div>
+  </div>
+
+  <script src="assets/js/jquery-1.11.2.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var filename = window.location.href.split('filename=')[1];
+      var hasExtension = filename.indexOf('.') != -1;
+      var extension = hasExtension ? filename.substr(filename.lastIndexOf('.')) : '.?';
+      $('.file-ext').text(extension);
+    });
+  </script>
+</body>
+</html>
