@@ -63,6 +63,10 @@ function initViewer(filename, filepath, contentType) {
   }
 }
 
+function addBorderToIframeContent() {
+  $('.viewer-frame').contents().find('body').css('border', '1px solid #e2e2e2');
+}
+
 $(document).ready(function() {
   var path = getPathToFile();
   var pathToMeta = getPathToMeta(path);
@@ -77,4 +81,11 @@ $(document).ready(function() {
     var contentType = xhr.getResponseHeader('Content-Type');
     initViewer(filename, URL_PREFIX + path, contentType);
   });
+
+  addBorderToIframeContent();
 });
+
+$('.viewer-frame').load(function() {
+  addBorderToIframeContent();
+});
+
