@@ -6,10 +6,7 @@ html, body {
 
 .viewer-frame {
   flex: 1;
-  border: 0;
-  width: 100%;
-}
-
-.viewer-frame body {
+  margin: 0 10px 10px 10px;
   border: 1px solid #e2e2e2;
 }
+
