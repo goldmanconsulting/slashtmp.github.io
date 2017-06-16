@@ -22,8 +22,21 @@ var SUPPORTED_CONTENT_TYPES = [
   'application/x-javascript'
 ];
 
-function getPathToFile() {
-  return window.location.href.split('f=')[1];
+function getPath() {
+  return URL_PREFIX + window.location.href.split('f=')[1];
+}
+
+function getPathToFile(path) {
+  // the path looks like this:
+  // [UUID]?AWSAccessKeyId=[ALPHANUMERIC]
+  //   &Expires=[EXPIRY for GET requests]&Signature=[SIGNATURE for GET requests]
+  //   &Expires=[EXPIRY for HEAD requests]&Sisgnature=[SIGNATURE for HEAD requests]
+
+  var params = path.split('&');
+  params.pop(); // signature for HEAD requests
+  params.pop(); // expiry for HEAD requests
+
+  return params.join('&');
 }
 
 function getPathToMeta(path) {
@@ -52,10 +65,18 @@ function isSupportedContentType(contentType) {
   return SUPPORTED_CONTENT_TYPES.indexOf(contentType) != -1;
 }
 
-function initViewer(filename, filepath, contentType) {
+function initViewer(filename, filepath, metapath, contentType) {
   $('.navbar-brand').text(filename);
-  $('.download-btn').attr('href', filepath);
-  $('.download-btn').attr('download', filename);
+
+  var downloadBtn = $('.download-btn');
+  downloadBtn.attr('href', filepath);
+  downloadBtn.attr('download', filename);
+
+  var shareBtn = $('.share-btn');
+  shareBtn.attr('data-dz-metaref', metapath);
+  shareBtn.attr('data-dz-fileref', filepath);
+  shareBtn.attr('data-dz-filename', filename);
+
   if (isSupportedContentType(contentType)) {
     $('.viewer-frame').attr('src', filepath);
   } else {
@@ -64,17 +85,19 @@ function initViewer(filename, filepath, contentType) {
 }
 
 $(document).ready(function() {
-  var path = getPathToFile();
+  var path = getPath();
+  var pathToFile = getPathToFile(path);
   var pathToMeta = getPathToMeta(path);
 
   $.ajax({
     type: 'HEAD',
-    url: URL_PREFIX + pathToMeta
+    url: pathToMeta
   }).error(function(xhr) {
+    $('.share-btn').addClass('disabled');
     $('.download-btn').addClass('disabled');
   }).success(function(data, status, xhr) {
     var filename = xhr .getResponseHeader('Content-Disposition').split('filename=')[1];
     var contentType = xhr.getResponseHeader('Content-Type');
-    initViewer(filename, URL_PREFIX + path, contentType);
+    initViewer(filename, pathToFile, pathToMeta, contentType);
   });
 });

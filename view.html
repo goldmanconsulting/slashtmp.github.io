@@ -21,7 +21,7 @@
         <span class="navbar-brand"></span>
       </div>
       <div class="navbar-collapse navbar-right">
-        <!--<button class="btn btn-default navbar-btn download-btn">download</button>-->
+        <a class="btn btn-default navbar-btn share-btn" data-toggle="modal" data-target="#share-link-dialog">share</a>
         <a class="btn btn-default navbar-btn download-btn" href="" download="untitled">download</a>
       </div>
     </div>
@@ -29,7 +29,41 @@
 
   <iframe class="viewer-frame"></iframe>
 
+	<!-- TODO exact copy exists in index.html -->
+	<div id="share-link-dialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="share-link-label">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="share-link-label">Share link to '<span id="share-link-filename"></span>'</h4>
+				</div>
+				<div class="modal-body">
+						<div class="form-group">
+							<label for="share-link-fileref">Link to file</label>
+							<input id="share-link-fileref" type="text" class="form-control" readonly aria-describedby="help-block"/>
+							<span id="help-block" class="help-block">To share copy this URL - anyone with this link can download the file.</span>
+						</div>
+						<div class="form-group">
+							<label for="share-link-via-email">Email this file</label>
+							<input id="share-link-via-email" type="email" class="form-control" aria-describedby="help-block-email" autocomplete="off"
+								placeholder="Enter email" />
+							<span id="help-block-email" class="help-block">Email a link to this file directly to your recepient.</span>
+							<button type="button" class="btn btn-success btn-send">Send</button>
+              <span id="spinner"></span>
+						</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
   <script src="assets/js/jquery-1.11.2.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/js/share.dialog.js"></script>
+	<script src="assets/js/spin.min.js"></script>
+	<script src="assets/js/email.js"></script>
   <script src="assets/js/viewer.js"></script>
 </body>
 </html>

@@ -10,3 +10,12 @@ html, body {
   border: 1px solid #e2e2e2;
 }
 
+#spinner {
+  display: none;
+}
+
+.share-btn {
+  /* making this button the same width as the download button */
+  min-width: 87.7px;
+}
+
