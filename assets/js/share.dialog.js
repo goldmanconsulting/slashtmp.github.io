@@ -1,3 +1,5 @@
+// require(url.utils)
+
 function toFilePath(fileref, metaref) {
   // get the last two query params from the metaref url, which represents the expiry and signature,
   // which happen to be the only 2 values that are different from the fileref url
@@ -15,7 +17,9 @@ function toFilePath(fileref, metaref) {
   // to go to slashtmp viewer so that they can preview the file before choosing
   // whether to download it or not
   // TODO move this logic to backend so that the url is correct to begin with
-  return fileref.replace('storage.slashtmp.io/', 'slashtmp.io/view?f=');
+  return simplify(fileref
+      .replace('storage.slashtmp.io/', 'slashtmp.io/view?f=')
+      .replace('?AWSAccessKeyId=', '&AWSAccessKeyId='));
 }
 
 function onShareBtnClick() {

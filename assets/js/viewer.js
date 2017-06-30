@@ -1,4 +1,5 @@
 // require('jquery')
+// require('url.utils')
 
 var URL_PREFIX = 'http://storage.slashtmp.io/';
 var SUPPORTED_CONTENT_TYPES = [
@@ -23,42 +24,7 @@ var SUPPORTED_CONTENT_TYPES = [
 ];
 
 function getPath() {
-  return URL_PREFIX + window.location.href.split('f=')[1];
-}
-
-function getPathToFile(path) {
-  // the path looks like this:
-  // [UUID]?AWSAccessKeyId=[ALPHANUMERIC]
-  //   &Expires=[EXPIRY for GET requests]&Signature=[SIGNATURE for GET requests]
-  //   &Expires=[EXPIRY for HEAD requests]&Sisgnature=[SIGNATURE for HEAD requests]
-
-  var params = path.split('&');
-  params.pop(); // signature for HEAD requests
-  params.pop(); // expiry for HEAD requests
-
-  return params.join('&');
-}
-
-function getPathToMeta(path) {
-  // the path looks like this:
-  // [UUID]?AWSAccessKeyId=[ALPHANUMERIC]
-  //   &Expires=[EXPIRY for GET requests]&Signature=[SIGNATURE for GET requests]
-  //   &Expires=[EXPIRY for HEAD requests]&Sisgnature=[SIGNATURE for HEAD requests]
-
-  var params = path.split('&');
-  var signature = params.pop(); // signature for HEAD requests
-  var expiry = params.pop(); // expiry for HEAD requests
-
-  // remove the exprity and signature for GET requests as we don't want it when doing 
-  // a HEAD request
-  params.pop();
-  params.pop();
-
-  // re-add the expiry and signature for HEAD requests back to the path
-  params.push(expiry);
-  params.push(signature);
-
-  return params.join('&');
+  return URL_PREFIX + awsify(window.location.href).split('f=')[1];
 }
 
 function isSupportedContentType(contentType) {
@@ -86,8 +52,8 @@ function initViewer(filename, filepath, metapath, contentType) {
 
 $(document).ready(function() {
   var path = getPath();
-  var pathToFile = getPathToFile(path);
-  var pathToMeta = getPathToMeta(path);
+  var pathToFile = s3Get(path);
+  var pathToMeta = s3Head(path);
 
   $.ajax({
     type: 'HEAD',
